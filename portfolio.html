@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>作品集 - 创意开发者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">YOMI</a>
+                <div class="flex space-x-8">
+                    <a href="portfolio.html" class="text-blue-600 hover:text-blue-700 transition-colors">作品集</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors">关于我</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 transition-colors">联系</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Portfolio Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 font-playfair">作品集</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    探索我的创意项目，每一个作品都代表着独特的设计理念和技术实现
+                </p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active px-6 py-2 rounded-full bg-blue-600 text-white" data-filter="all">
+                    全部作品
+                </button>
+                <button class="filter-btn px-6 py-2 rounded-full bg-gray-200 text-gray-700 hover:bg-blue-600 hover:text-white" data-filter="featured">
+                    精选作品
+                </button>
+            </div>
+
+            <!-- Projects Grid -->
+            <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Projects will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 获取并显示项目列表
+        function renderProjects(filter = 'all') {
+            const projects = JSON.parse(localStorage.getItem('projects') || '[]');
+            console.log('Loading projects:', projects);
+            
+            const container = document.getElementById('projectsGrid');
+            container.innerHTML = '';
+
+            // 过滤项目
+            const filteredProjects = projects.filter(project => {
+                if (project.hidden) return false;
+                if (filter === 'featured') return project.featured;
+                return true;
+            });
+
+            filteredProjects.forEach(project => {
+                // 确保每个项目都有一个唯一的ID
+                if (!project.id) {
+                    project.id = Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+                }
+                
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card bg-white rounded-xl shadow-lg overflow-hidden';
+                
+                // 使用项目ID作为URL参数
+                const projectUrl = `project-detail.html?id=${encodeURIComponent(project.id)}`;
+                console.log('Creating project card with URL:', projectUrl);
+                
+                projectCard.innerHTML = `
+                    <a href="${projectUrl}" class="block">
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img src="${project.cover || 'https://via.placeholder.com/400x300'}" 
+                                 alt="${project.title}" 
+                                 class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-xl font-semibold">${project.title}</h3>
+                                ${project.featured ? '<span class="px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">精选</span>' : ''}
+                            </div>
+                            <p class="text-gray-600 mb-4">${project.shortDesc || ''}</p>
+                            ${project.tags ? `
+                                <div class="flex flex-wrap gap-2">
+                                    ${project.tags.map(tag => `
+                                        <span class="px-2 py-1 text-xs bg-gray-100 text-gray-600 rounded">${tag}</span>
+                                    `).join('')}
+                                </div>
+                            ` : ''}
+                        </div>
+                    </a>
+                `;
+                
+                container.appendChild(projectCard);
+            });
+
+            // 如果没有项目，显示提示信息
+            if (filteredProjects.length === 0) {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'col-span-3 text-center py-12';
+                emptyState.innerHTML = `
+                    <div class="text-gray-400 mb-4">
+                        <i class="fas fa-folder-open text-4xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">暂无项目</h3>
+                    <p class="text-gray-500">当前分类下没有可显示的项目</p>
+                `;
+                container.appendChild(emptyState);
+            }
+
+            // 保存更新后的项目数据
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        // 添加过滤按钮事件监听器
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 更新按钮状态
+                document.querySelectorAll('.filter-btn').forEach(b => {
+                    b.classList.remove('bg-blue-600', 'text-white');
+                    b.classList.add('bg-gray-200', 'text-gray-700');
+                });
+                btn.classList.remove('bg-gray-200', 'text-gray-700');
+                btn.classList.add('bg-blue-600', 'text-white');
+
+                // 过滤项目
+                renderProjects(btn.dataset.filter);
+            });
+        });
+
+        // 监听 localStorage 变化
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'projects') {
+                renderProjects(document.querySelector('.filter-btn.active').dataset.filter);
+            }
+        });
+
+        // 初始化页面
+        renderProjects();
+    </script>
+</body>
+</html> 

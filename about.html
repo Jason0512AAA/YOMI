@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我 - 创意开发者</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-inter {
+            font-family: 'Inter', sans-serif;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #f3f4f6 0%, #ffffff 100%);
+        }
+    </style>
+</head>
+<body class="bg-white font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="text-2xl font-bold text-blue-600">YOMI</a>
+                <div class="flex space-x-8">
+                    <a href="portfolio.html" class="text-gray-600 hover:text-blue-600 transition-colors">作品集</a>
+                    <a href="about.html" class="text-blue-600 hover:text-blue-700 transition-colors">关于我</a>
+                    <a href="index.html#contact" class="text-gray-600 hover:text-blue-600 transition-colors">联系</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24 pb-16">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Hero Section -->
+            <div class="text-center mb-16">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 font-playfair">创意无限，技术至上</h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">致力于创造优秀的数字体验，让设计与技术完美融合</p>
+            </div>
+
+            <!-- About Section -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-24">
+                <div class="relative order-2 lg:order-1">
+                    <div class="w-full max-w-md mx-auto aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="assets/profile.jpg" alt="个人照片" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="order-1 lg:order-2">
+                    <h2 class="text-4xl font-bold mb-8 font-playfair">关于我</h2>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        我是一名充满激情的全栈开发工程师和UI/UX设计师，专注于创建美观且功能强大的数字体验。我相信好的设计不仅要看起来漂亮，还要解决实际问题。
+                    </p>
+                    <div class="flex items-center space-x-6">
+                        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                            联系我
+                        </a>
+                        <a href="portfolio.html" class="inline-flex items-center justify-center px-6 py-3 border-2 border-gray-200 text-gray-700 rounded-xl hover:border-blue-600 hover:text-blue-600 transition-colors">
+                            查看作品
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="mb-24">
+                <h2 class="text-4xl font-bold mb-12 font-playfair text-center">专业技能</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-semibold mb-4">前端开发</h3>
+                        <p class="text-gray-600">精通 React、Vue、Next.js 等现代前端框架，创建响应式和交互性强的用户界面。</p>
+                    </div>
+                    <div class="p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-semibold mb-4">后端开发</h3>
+                        <p class="text-gray-600">熟练使用 Node.js、Python、Java 构建高性能、可扩展的服务端应用。</p>
+                    </div>
+                    <div class="p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-semibold mb-4">UI/UX设计</h3>
+                        <p class="text-gray-600">专注于用户体验，使用 Figma、Adobe XD 创造直观且美观的界面设计。</p>
+                    </div>
+                    <div class="p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow">
+                        <h3 class="text-xl font-semibold mb-4">数据库设计</h3>
+                        <p class="text-gray-600">精通 MySQL、MongoDB 等数据库的设计与优化，确保数据高效存储与访问。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Section -->
+            <div>
+                <h2 class="text-4xl font-bold mb-12 font-playfair text-center">工作经历</h2>
+                <div class="max-w-3xl mx-auto space-y-8">
+                    <div class="p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">高级全栈开发工程师</h3>
+                                <p class="text-gray-600">某科技公司</p>
+                            </div>
+                            <span class="text-gray-500">2020 - 至今</span>
+                        </div>
+                    </div>
+                    <div class="p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">UI/UX设计师</h3>
+                                <p class="text-gray-600">某设计工作室</p>
+                            </div>
+                            <span class="text-gray-500">2018 - 2020</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 更新关于页面内容的函数
+        function updateAboutContent() {
+            const aboutData = JSON.parse(localStorage.getItem('aboutData') || '{}');
+            
+            // 更新个人简介
+            if (aboutData.content) {
+                const contentContainer = document.querySelector('.text-xl.text-gray-600.mb-8');
+                if (contentContainer) {
+                    contentContainer.textContent = aboutData.content;
+                }
+            }
+
+            // 更新技能列表
+            if (aboutData.skills) {
+                const skillsContainer = document.querySelector('.grid.grid-cols-1.md\\:grid-cols-2.lg\\:grid-cols-4.gap-8');
+                if (skillsContainer) {
+                    skillsContainer.innerHTML = ''; // 清空现有技能
+
+                    aboutData.skills.forEach(skill => {
+                        const skillEl = document.createElement('div');
+                        skillEl.className = 'p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow';
+                        skillEl.innerHTML = `
+                            <h3 class="text-xl font-semibold mb-4">${skill.title}</h3>
+                            <p class="text-gray-600">${skill.items.join(', ')}</p>
+                        `;
+                        skillsContainer.appendChild(skillEl);
+                    });
+                }
+            }
+
+            // 更新工作经历
+            if (aboutData.experience) {
+                const experienceContainer = document.querySelector('.max-w-3xl.mx-auto.space-y-8');
+                if (experienceContainer) {
+                    experienceContainer.innerHTML = ''; // 清空现有经历
+
+                    aboutData.experience.forEach(exp => {
+                        const expEl = document.createElement('div');
+                        expEl.className = 'p-8 rounded-2xl gradient-bg hover:shadow-lg transition-shadow';
+                        expEl.innerHTML = `
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h3 class="text-xl font-semibold mb-2">${exp.title}</h3>
+                                    <p class="text-gray-600">${exp.company}</p>
+                                </div>
+                                <span class="text-gray-500">${exp.period}</span>
+                            </div>
+                        `;
+                        experienceContainer.appendChild(expEl);
+                    });
+                }
+            }
+        }
+
+        // 页面加载时立即更新内容
+        document.addEventListener('DOMContentLoaded', updateAboutContent);
+
+        // 每5秒检查一次更新
+        setInterval(updateAboutContent, 5000);
+
+        // 监听 localStorage 变化
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'aboutData') {
+                updateAboutContent();
+            }
+        });
+    </script>
+</body>
+</html> 

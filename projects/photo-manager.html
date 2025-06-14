@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能相册管理器 - 项目详情</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="../index.html" class="text-2xl font-bold text-blue-600">Portfolio</a>
+                <div class="flex space-x-8">
+                    <a href="../portfolio.html" class="text-gray-600 hover:text-blue-600 transition-colors">作品集</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-blue-600 transition-colors">关于我</a>
+                    <a href="../index.html#contact" class="text-gray-600 hover:text-blue-600 transition-colors">联系</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Project Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 font-playfair">智能相册管理器</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    基于人工智能的照片管理系统，让您的照片管理更智能、更轻松
+                </p>
+            </div>
+
+            <!-- Project Image -->
+            <div class="mb-16">
+                <img src="https://via.placeholder.com/1200x600" alt="智能相册管理器界面" class="w-full rounded-2xl shadow-lg">
+            </div>
+
+            <!-- Project Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl font-bold mb-6">项目概述</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        智能相册管理器是一款革新性的照片管理工具，它利用先进的AI技术自动分析和组织您的照片。系统能够识别照片中的人物、场景、物体，并自动添加相应的标签，让照片检索变得轻而易举。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-6">主要功能</h2>
+                    <ul class="space-y-4 text-gray-600 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>AI驱动的照片分类系统</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>面部识别和人物分组</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>场景识别和智能标签</span>
+                        </li>
+                    </ul>
+
+                    <h2 class="text-2xl font-bold mb-6">技术栈</h2>
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Python</span>
+                        <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">TensorFlow</span>
+                        <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">React</span>
+                        <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">Node.js</span>
+                        <span class="px-4 py-2 bg-gray-100 rounded-full text-gray-700">MongoDB</span>
+                    </div>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4">项目信息</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-700">客户</h4>
+                                <p class="text-gray-600">某科技公司</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700">完成时间</h4>
+                                <p class="text-gray-600">2023年</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700">我的角色</h4>
+                                <p class="text-gray-600">全栈开发 & UI设计</p>
+                            </div>
+                            <div class="pt-4">
+                                <a href="#" class="block text-center bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors">
+                                    查看演示
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Project -->
+            <div class="mt-32 text-center">
+                <p class="text-gray-600 mb-4">下一个项目</p>
+                <a href="dev-tools.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                    开发者工具集 →
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

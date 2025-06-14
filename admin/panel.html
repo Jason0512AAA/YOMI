@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理面板</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <div class="min-h-screen">
+        <!-- Navigation -->
+        <nav class="bg-white shadow-sm">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between h-16 items-center">
+                    <div class="flex items-center">
+                        <h1 class="text-xl font-bold text-gray-900">管理面板</h1>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <a href="../index.html" class="text-gray-600 hover:text-blue-600" target="_blank">查看网站</a>
+                        <button id="logoutBtn" class="text-red-600 hover:text-red-700">退出登录</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="max-w-7xl mx-auto py-6 px-4">
+            <!-- Tabs -->
+            <div class="mb-6 border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8">
+                    <button class="tab-btn active border-b-2 border-blue-500 py-4 px-1 text-sm font-medium" data-tab="projects">
+                        作品管理
+                    </button>
+                    <button class="tab-btn py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="about">
+                        关于页面
+                    </button>
+                    <button class="tab-btn py-4 px-1 text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300" data-tab="home">
+                        首页设置
+                    </button>
+                </nav>
+            </div>
+
+            <!-- Projects Tab -->
+            <div id="projects-tab" class="tab-content">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-lg font-semibold">作品列表</h2>
+                    <button id="addProjectBtn" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                        添加新作品
+                    </button>
+                </div>
+                
+                <div id="projectsList" class="space-y-4">
+                    <!-- Projects will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div id="about-tab" class="tab-content hidden">
+                <h2 class="text-lg font-semibold mb-6">关于页面设置</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">个人简介</label>
+                        <textarea id="aboutContent" rows="6" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">技能列表</label>
+                        <div id="skillsList" class="space-y-4">
+                            <!-- Skills will be dynamically inserted here -->
+                        </div>
+                        <button id="addSkillBtn" class="mt-4 text-blue-600 hover:text-blue-700">
+                            + 添加技能
+                        </button>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">工作经历</label>
+                        <div id="experienceList" class="space-y-4">
+                            <!-- Experience items will be dynamically inserted here -->
+                        </div>
+                        <button id="addExperienceBtn" class="mt-4 text-blue-600 hover:text-blue-700">
+                            + 添加工作经历
+                        </button>
+                    </div>
+                    <button id="saveAbout" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
+                        保存更改
+                    </button>
+                </div>
+            </div>
+
+            <!-- Home Tab -->
+            <div id="home-tab" class="tab-content hidden">
+                <h2 class="text-lg font-semibold mb-6">首页设置</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">主标题</label>
+                        <input type="text" id="homeTitle" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">副标题</label>
+                        <input type="text" id="homeSubtitle" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">联系方式</label>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm text-gray-600">邮箱</label>
+                                <input type="email" id="contactEmail" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label class="block text-sm text-gray-600">GitHub</label>
+                                <input type="url" id="contactGithub" class="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                            </div>
+                        </div>
+                    </div>
+                    <button id="saveHome" class="bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700">
+                        保存更改
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Project Edit Modal -->
+    <div id="projectModal" class="fixed inset-0 bg-gray-500 bg-opacity-75 hidden">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4" id="modalTitle">编辑作品</h3>
+                    <form id="projectForm" class="space-y-4">
+                        <input type="hidden" id="projectId">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">项目名称</label>
+                            <input type="text" id="projectTitle" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">简短描述</label>
+                            <input type="text" id="projectShortDesc" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">详细描述</label>
+                            <textarea id="projectDescription" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">封面图片URL</label>
+                            <input type="text" id="projectCover" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">项目图片</label>
+                            <div id="projectImages" class="mt-2 grid grid-cols-2 gap-4">
+                                <!-- Project images will be dynamically inserted here -->
+                            </div>
+                            <button type="button" id="addImageBtn" class="mt-2 text-blue-600 hover:text-blue-700">
+                                + 添加图片
+                            </button>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">技术标签</label>
+                            <input type="text" id="projectTags" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500" placeholder="用逗号分隔多个标签">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">项目链接</label>
+                            <input type="url" id="projectUrl" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="projectFeatured" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-700">设为精选</span>
+                            </label>
+                            <label class="flex items-center">
+                                <input type="checkbox" id="projectHidden" class="rounded border-gray-300 text-blue-600 focus:ring-blue-500">
+                                <span class="ml-2 text-sm text-gray-700">隐藏项目</span>
+                            </label>
+                        </div>
+                    </form>
+                    <div class="mt-6 flex justify-end space-x-4">
+                        <button id="cancelProject" class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
+                            取消
+                        </button>
+                        <button id="saveProject" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
+                            保存
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 检查登录状态
+        if (!localStorage.getItem('adminLoggedIn')) {
+            window.location.href = 'login.html';
+        }
+
+        // 获取所有项目数据
+        function getProjects() {
+            return JSON.parse(localStorage.getItem('projects') || '[]');
+        }
+
+        // 保存所有项目数据
+        function saveProjects(projects) {
+            localStorage.setItem('projects', JSON.stringify(projects));
+        }
+
+        // 渲染项目列表
+        function renderProjects() {
+            const projects = getProjects();
+            const container = document.getElementById('projectsList');
+            container.innerHTML = '';
+
+            projects.forEach((project, index) => {
+                const projectEl = document.createElement('div');
+                projectEl.className = 'bg-white rounded-lg shadow p-6 flex items-center justify-between';
+                projectEl.innerHTML = `
+                    <div class="flex items-center space-x-4">
+                        <div class="flex-shrink-0 w-16 h-16 bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="${project.cover || 'https://via.placeholder.com/64'}" alt="" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-medium ${project.hidden ? 'text-gray-400' : 'text-gray-900'}">${project.title}</h3>
+                            <p class="text-sm text-gray-500">${project.shortDesc || ''}</p>
+                            ${project.featured ? '<span class="inline-block px-2 py-1 text-xs bg-yellow-100 text-yellow-800 rounded">精选</span>' : ''}
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <button class="edit-project text-blue-600 hover:text-blue-700" data-id="${index}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="move-up text-gray-600 hover:text-gray-700 ${index === 0 ? 'invisible' : ''}" data-id="${index}">
+                            <i class="fas fa-arrow-up"></i>
+                        </button>
+                        <button class="move-down text-gray-600 hover:text-gray-700 ${index === projects.length - 1 ? 'invisible' : ''}" data-id="${index}">
+                            <i class="fas fa-arrow-down"></i>
+                        </button>
+                        <button class="delete-project text-red-600 hover:text-red-700" data-id="${index}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(projectEl);
+            });
+
+            // 添加事件监听器
+            document.querySelectorAll('.edit-project').forEach(btn => {
+                btn.addEventListener('click', () => editProject(parseInt(btn.dataset.id)));
+            });
+
+            document.querySelectorAll('.delete-project').forEach(btn => {
+                btn.addEventListener('click', () => deleteProject(parseInt(btn.dataset.id)));
+            });
+
+            document.querySelectorAll('.move-up').forEach(btn => {
+                btn.addEventListener('click', () => moveProject(parseInt(btn.dataset.id), 'up'));
+            });
+
+            document.querySelectorAll('.move-down').forEach(btn => {
+                btn.addEventListener('click', () => moveProject(parseInt(btn.dataset.id), 'down'));
+            });
+        }
+
+        // 移动项目位置
+        function moveProject(index, direction) {
+            const projects = getProjects();
+            if (direction === 'up' && index > 0) {
+                [projects[index], projects[index - 1]] = [projects[index - 1], projects[index]];
+            } else if (direction === 'down' && index < projects.length - 1) {
+                [projects[index], projects[index + 1]] = [projects[index + 1], projects[index]];
+            }
+            saveProjects(projects);
+            renderProjects();
+        }
+
+        // 删除项目
+        function deleteProject(index) {
+            if (confirm('确定要删除这个项目吗？')) {
+                const projects = getProjects();
+                projects.splice(index, 1);
+                saveProjects(projects);
+                renderProjects();
+            }
+        }
+
+        // 编辑项目
+        function editProject(index) {
+            const projects = getProjects();
+            const project = projects[index];
+            
+            document.getElementById('modalTitle').textContent = '编辑作品';
+            document.getElementById('projectId').value = index;
+            document.getElementById('projectTitle').value = project.title || '';
+            document.getElementById('projectShortDesc').value = project.shortDesc || '';
+            document.getElementById('projectDescription').value = project.description || '';
+            document.getElementById('projectCover').value = project.cover || '';
+            document.getElementById('projectTags').value = (project.tags || []).join(', ');
+            document.getElementById('projectUrl').value = project.url || '';
+            document.getElementById('projectFeatured').checked = project.featured || false;
+            document.getElementById('projectHidden').checked = project.hidden || false;
+
+            // 渲染项目图片
+            const imagesContainer = document.getElementById('projectImages');
+            imagesContainer.innerHTML = '';
+            (project.images || []).forEach((image, idx) => {
+                const imageEl = document.createElement('div');
+                imageEl.className = 'relative';
+                imageEl.innerHTML = `
+                    <img src="${image}" class="w-full h-32 object-cover rounded">
+                    <button type="button" class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center delete-image" data-index="${idx}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                imagesContainer.appendChild(imageEl);
+            });
+
+            document.getElementById('projectModal').classList.remove('hidden');
+        }
+
+        // 添加新项目
+        document.getElementById('addProjectBtn').addEventListener('click', () => {
+            document.getElementById('modalTitle').textContent = '添加新作品';
+            document.getElementById('projectId').value = '';
+            document.getElementById('projectForm').reset();
+            document.getElementById('projectImages').innerHTML = '';
+            document.getElementById('projectModal').classList.remove('hidden');
+        });
+
+        // 保存项目
+        document.getElementById('saveProject').addEventListener('click', () => {
+            const projects = getProjects();
+            const projectId = document.getElementById('projectId').value;
+            
+            const projectData = {
+                title: document.getElementById('projectTitle').value,
+                shortDesc: document.getElementById('projectShortDesc').value,
+                description: document.getElementById('projectDescription').value,
+                cover: document.getElementById('projectCover').value,
+                tags: document.getElementById('projectTags').value.split(',').map(tag => tag.trim()).filter(tag => tag),
+                url: document.getElementById('projectUrl').value,
+                featured: document.getElementById('projectFeatured').checked,
+                hidden: document.getElementById('projectHidden').checked,
+                images: Array.from(document.getElementById('projectImages').children).map(
+                    el => el.querySelector('img').src
+                )
+            };
+
+            if (projectId === '') {
+                projects.push(projectData);
+            } else {
+                projects[parseInt(projectId)] = projectData;
+            }
+
+            saveProjects(projects);
+            document.getElementById('projectModal').classList.add('hidden');
+            renderProjects();
+        });
+
+        // 取消编辑
+        document.getElementById('cancelProject').addEventListener('click', () => {
+            document.getElementById('projectModal').classList.add('hidden');
+        });
+
+        // 添加项目图片
+        document.getElementById('addImageBtn').addEventListener('click', () => {
+            const url = prompt('请输入图片URL：');
+            if (url) {
+                const imageEl = document.createElement('div');
+                imageEl.className = 'relative';
+                imageEl.innerHTML = `
+                    <img src="${url}" class="w-full h-32 object-cover rounded">
+                    <button type="button" class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center delete-image">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                document.getElementById('projectImages').appendChild(imageEl);
+            }
+        });
+
+        // 删除项目图片
+        document.getElementById('projectImages').addEventListener('click', (e) => {
+            if (e.target.closest('.delete-image')) {
+                e.target.closest('.relative').remove();
+            }
+        });
+
+        // 标签页切换
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.tab-btn').forEach(b => {
+                    b.classList.remove('border-b-2', 'border-blue-500', 'text-gray-900');
+                    b.classList.add('text-gray-500');
+                });
+                btn.classList.add('border-b-2', 'border-blue-500', 'text-gray-900');
+                btn.classList.remove('text-gray-500');
+
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`${btn.dataset.tab}-tab`).classList.remove('hidden');
+            });
+        });
+
+        // 加载和保存关于页面内容
+        document.getElementById('saveAbout').addEventListener('click', () => {
+            const aboutData = {
+                content: document.getElementById('aboutContent').value,
+                skills: Array.from(document.getElementById('skillsList').children).map(skill => ({
+                    title: skill.querySelector('input[type="text"]').value,
+                    items: skill.querySelector('textarea').value.split('\n').filter(item => item.trim())
+                })),
+                experience: Array.from(document.getElementById('experienceList').children).map(exp => ({
+                    title: exp.querySelector('input[type="text"]').value,
+                    company: exp.querySelector('input[placeholder="公司名称"]').value,
+                    period: exp.querySelector('input[placeholder="工作时间"]').value
+                }))
+            };
+            localStorage.setItem('aboutData', JSON.stringify(aboutData));
+            alert('关于页面内容已保存！');
+        });
+
+        // 加载首页设置
+        const homeData = JSON.parse(localStorage.getItem('homeData') || '{}');
+        document.getElementById('homeTitle').value = homeData.title || '';
+        document.getElementById('homeSubtitle').value = homeData.subtitle || '';
+        document.getElementById('contactEmail').value = homeData.email || '';
+        document.getElementById('contactGithub').value = homeData.github || '';
+
+        // 保存首页设置
+        document.getElementById('saveHome').addEventListener('click', () => {
+            const homeData = {
+                title: document.getElementById('homeTitle').value,
+                subtitle: document.getElementById('homeSubtitle').value,
+                email: document.getElementById('contactEmail').value,
+                github: document.getElementById('contactGithub').value
+            };
+            localStorage.setItem('homeData', JSON.stringify(homeData));
+            alert('首页设置已保存！');
+        });
+
+        // 添加技能
+        document.getElementById('addSkillBtn').addEventListener('click', () => {
+            const skillEl = document.createElement('div');
+            skillEl.className = 'bg-white p-4 rounded-lg shadow';
+            skillEl.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <input type="text" class="w-full mr-4 rounded-md border-gray-300" placeholder="技能类别">
+                    <button class="delete-skill text-red-600 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="每行输入一个技能项"></textarea>
+            `;
+            document.getElementById('skillsList').appendChild(skillEl);
+        });
+
+        // 添加工作经历
+        document.getElementById('addExperienceBtn').addEventListener('click', () => {
+            const expEl = document.createElement('div');
+            expEl.className = 'bg-white p-4 rounded-lg shadow';
+            expEl.innerHTML = `
+                <div class="flex justify-between items-center mb-2">
+                    <input type="text" class="w-full mr-4 rounded-md border-gray-300" placeholder="职位名称">
+                    <button class="delete-experience text-red-600 hover:text-red-700">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" class="rounded-md border-gray-300" placeholder="公司名称">
+                    <input type="text" class="rounded-md border-gray-300" placeholder="工作时间">
+                </div>
+            `;
+            document.getElementById('experienceList').appendChild(expEl);
+        });
+
+        // 删除技能和工作经历
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.delete-skill')) {
+                e.target.closest('.bg-white').remove();
+            }
+            if (e.target.closest('.delete-experience')) {
+                e.target.closest('.bg-white').remove();
+            }
+        });
+
+        // 加载已保存的关于页面数据
+        const aboutData = JSON.parse(localStorage.getItem('aboutData') || '{}');
+        document.getElementById('aboutContent').value = aboutData.content || '';
+
+        // 渲染已保存的技能
+        if (aboutData.skills) {
+            aboutData.skills.forEach(skill => {
+                const skillEl = document.createElement('div');
+                skillEl.className = 'bg-white p-4 rounded-lg shadow';
+                skillEl.innerHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <input type="text" class="w-full mr-4 rounded-md border-gray-300" value="${skill.title}" placeholder="技能类别">
+                        <button class="delete-skill text-red-600 hover:text-red-700">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <textarea class="w-full rounded-md border-gray-300" rows="3" placeholder="每行输入一个技能项">${skill.items.join('\n')}</textarea>
+                `;
+                document.getElementById('skillsList').appendChild(skillEl);
+            });
+        }
+
+        // 渲染已保存的工作经历
+        if (aboutData.experience) {
+            aboutData.experience.forEach(exp => {
+                const expEl = document.createElement('div');
+                expEl.className = 'bg-white p-4 rounded-lg shadow';
+                expEl.innerHTML = `
+                    <div class="flex justify-between items-center mb-2">
+                        <input type="text" class="w-full mr-4 rounded-md border-gray-300" value="${exp.title}" placeholder="职位名称">
+                        <button class="delete-experience text-red-600 hover:text-red-700">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <input type="text" class="rounded-md border-gray-300" value="${exp.company}" placeholder="公司名称">
+                        <input type="text" class="rounded-md border-gray-300" value="${exp.period}" placeholder="工作时间">
+                    </div>
+                `;
+                document.getElementById('experienceList').appendChild(expEl);
+            });
+        }
+
+        // 退出登录
+        document.getElementById('logoutBtn').addEventListener('click', () => {
+            localStorage.removeItem('adminLoggedIn');
+            window.location.href = 'login.html';
+        });
+
+        // 初始化页面
+        renderProjects();
+    </script>
+</body>
+</html> 

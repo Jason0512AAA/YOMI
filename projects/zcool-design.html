@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>站酷作品展示 - 创意设计</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .hover-zoom {
+            transition: transform 0.3s ease;
+        }
+        .hover-zoom:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="../index.html" class="text-2xl font-bold text-blue-600">Portfolio</a>
+                <div class="flex space-x-8">
+                    <a href="../portfolio.html" class="text-gray-600 hover:text-blue-600 transition-colors">作品集</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-blue-600 transition-colors">关于我</a>
+                    <a href="../index.html#contact" class="text-gray-600 hover:text-blue-600 transition-colors">联系</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="min-h-screen pt-24">
+        <div class="max-w-7xl mx-auto px-4">
+            <!-- Project Header -->
+            <div class="text-center mb-16">
+                <h1 class="text-4xl md:text-5xl font-bold mb-6 font-playfair">创意设计作品展示</h1>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    展现独特的设计理念和创意思维，打造极致的视觉体验
+                </p>
+            </div>
+
+            <!-- Project Images -->
+            <div class="mb-16">
+                <div class="image-grid">
+                    <div class="overflow-hidden rounded-2xl shadow-lg">
+                        <img src="https://img.zcool.cn/community/01f9b15cd2d23ea801208f8b4b4b5b.jpg" 
+                             alt="创意设计作品" 
+                             class="w-full hover-zoom">
+                    </div>
+                    <div class="overflow-hidden rounded-2xl shadow-lg">
+                        <img src="https://img.zcool.cn/community/01f9b15cd2d23ea801208f8b4b4b5b.jpg" 
+                             alt="创意设计作品" 
+                             class="w-full hover-zoom">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                <!-- Main Content -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-2xl font-bold mb-6">项目概述</h2>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        这个项目展示了现代设计美学与创意思维的完美结合。通过独特的视觉语言和精心的布局设计，
+                        为观众带来耳目一新的视觉体验。设计中融入了多元化的创意元素，既保持了专业性，
+                        又展现出独特的艺术气息。
+                    </p>
+                    
+                    <h2 class="text-2xl font-bold mb-6">设计理念</h2>
+                    <ul class="space-y-4 text-gray-600 mb-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>简约而不简单的设计风格</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>注重细节的视觉表现</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <span>创新的艺术表达方式</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="lg:col-span-1">
+                    <div class="bg-gray-50 p-6 rounded-2xl">
+                        <h3 class="text-xl font-bold mb-4">项目信息</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-700">创作时间</h4>
+                                <p class="text-gray-600">2024年</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700">设计工具</h4>
+                                <p class="text-gray-600">Photoshop, Illustrator</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700">作品类型</h4>
+                                <p class="text-gray-600">创意设计</p>
+                            </div>
+                            <div class="pt-4">
+                                <a href="https://www.zcool.com.cn/work/ZNzA1MzIzNjg=.html" target="_blank" class="block text-center bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700 transition-colors">
+                                    查看原作品
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Project -->
+            <div class="mt-32 text-center">
+                <p class="text-gray-600 mb-4">下一个项目</p>
+                <a href="photo-manager.html" class="text-2xl font-bold text-blue-600 hover:text-blue-700 transition-colors">
+                    智能相册管理器 →
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+</html> 

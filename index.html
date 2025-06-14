@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YOMI - 创意设计工作室</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .font-inter { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .service-card {
+            transition: transform 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .back-to-top {
+            display: none;
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 99;
+            transition: opacity 0.3s;
+        }
+        .back-to-top.visible {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-white font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <a href="index.html" class="text-2xl font-bold gradient-text">YOMI</a>
+                <div class="flex space-x-8">
+                    <a href="portfolio.html" class="text-gray-600 hover:text-blue-600 transition-colors">作品集</a>
+                    <a href="about.html" class="text-gray-600 hover:text-blue-600 transition-colors">关于我</a>
+                    <a href="#contact" class="text-gray-600 hover:text-blue-600 transition-colors">联系</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center pt-16 pb-32 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 to-white -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right">
+                <h1 class="text-5xl lg:text-7xl font-bold mb-8 font-playfair">
+                    创意设计<br>
+                    <span class="gradient-text">数字体验</span>
+                </h1>
+                <p class="text-xl text-gray-600 mb-12 leading-relaxed">
+                    专注于餐饮视觉、电商设计与3D建模渲染，为品牌打造独特的视觉体验
+                </p>
+                <div class="flex space-x-6">
+                    <a href="#services" class="px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                        了解服务
+                    </a>
+                    <a href="portfolio.html" class="px-8 py-4 border-2 border-gray-200 text-gray-700 rounded-xl hover:border-blue-600 hover:text-blue-600 transition-colors">
+                        查看作品
+                    </a>
+                </div>
+            </div>
+            <div class="relative" data-aos="fade-left">
+                <img src="https://via.placeholder.com/800x600" alt="创意设计展示" class="rounded-2xl shadow-2xl">
+                <div class="absolute -bottom-8 -right-8 bg-white p-6 rounded-2xl shadow-xl">
+                    <p class="text-2xl font-bold gradient-text">100+</p>
+                    <p class="text-gray-600">成功项目</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-6 font-playfair">专业服务</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    提供全方位的设计解决方案，从概念到实现，为您的品牌创造独特价值
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- 餐饮3D建模 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-64 mb-6 rounded-xl overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="3D建模渲染" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">餐饮3D建模渲染</h3>
+                    <p class="text-gray-600 mb-6">专业的美食3D建模和渲染服务，让您的菜品展示更具视觉冲击力</p>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>• 真实质感还原</li>
+                        <li>• 多角度渲染</li>
+                        <li>• 场景搭建</li>
+                    </ul>
+                </div>
+
+                <!-- 电商设计 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-64 mb-6 rounded-xl overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="电商设计" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">电商视觉设计</h3>
+                    <p class="text-gray-600 mb-6">专业的电商平台设计，提升转化率和用户体验</p>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>• 详情页设计</li>
+                        <li>• 营销活动设计</li>
+                        <li>• 店铺装修</li>
+                    </ul>
+                </div>
+
+                <!-- 平面设计 -->
+                <div class="service-card bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-64 mb-6 rounded-xl overflow-hidden">
+                        <img src="https://via.placeholder.com/400x300" alt="平面设计" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">品牌平面设计</h3>
+                    <p class="text-gray-600 mb-6">全方位的品牌视觉设计，塑造专业品牌形象</p>
+                    <ul class="space-y-3 text-gray-600">
+                        <li>• 品牌VI设计</li>
+                        <li>• 包装设计</li>
+                        <li>• 宣传物料设计</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Process Section -->
+    <section class="py-32">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-20" data-aos="fade-up">
+                <h2 class="text-4xl font-bold mb-6 font-playfair">工作流程</h2>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    专业规范的工作流程，确保项目高效完成
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-blue-600">01</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">需求沟通</h3>
+                    <p class="text-gray-600">深入了解您的需求和目标，制定合适的设计方案</p>
+                </div>
+
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-blue-600">02</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">概念设计</h3>
+                    <p class="text-gray-600">创作初步设计方案，与您进行充分沟通和调整</p>
+                </div>
+
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-blue-600">03</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">制作执行</h3>
+                    <p class="text-gray-600">专业团队精心制作，确保每个细节完美呈现</p>
+                </div>
+
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold text-blue-600">04</span>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">交付使用</h3>
+                    <p class="text-gray-600">提供完整的设计文件，确保顺利应用</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-32 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right">
+                    <h2 class="text-4xl font-bold mb-8 font-playfair">联系我们</h2>
+                    <p class="text-xl text-gray-600 mb-8">
+                        无论您有任何问题或项目需求，都欢迎随时与我们联系
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">邮箱</h3>
+                                <p class="text-gray-600">contact@yomi.studio</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">电话</h3>
+                                <p class="text-gray-600">+86 123 4567 8900</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="bg-white p-8 rounded-2xl shadow-lg" data-aos="fade-left">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">姓名</label>
+                            <input type="text" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-colors" placeholder="请输入您的姓名">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">邮箱</label>
+                            <input type="email" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-colors" placeholder="请输入您的邮箱">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">留言</label>
+                            <textarea class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-colors h-32" placeholder="请输入您的留言"></textarea>
+                        </div>
+                        <button type="submit" class="w-full px-8 py-4 bg-blue-600 text-white rounded-xl hover:bg-blue-700 transition-colors">
+                            发送消息
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-colors">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/>
+        </svg>
+    </button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // 初始化 AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // 返回顶部按钮
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 表单提交处理
+        const form = document.querySelector('form');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // 这里添加表单提交逻辑
+            alert('消息已发送！我们会尽快与您联系。');
+            form.reset();
+        });
+    </script>
+</body>
+</html> 
